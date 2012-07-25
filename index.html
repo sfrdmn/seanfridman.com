@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>seanfridman.com</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/index.css">
+    <!--[if lt IE 9]>
+      <script src="/static/external/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <header>
+          <h1>Sean Fridman</h1>
+          <h2>Programming Services</h2>
+        </header>
+        <div class="tech-images">
+          <ul>
+            <li class="left"></li>
+            <li class="middle"></li>
+            <li class="right"></li>
+          <ul>
+        </div>
+        <section>
+          <ul>
+            <li>
+              <a href="http://twitter.com/sfrdmn">Twitter</a>
+            </li>
+            <li id="email">
+              <a href="">Email</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var emailLi = document.getElementById('email');
+
+    attachListener(emailLi, 'click', function(e) {
+      e.preventDefault();
+      emailLi.innerHTML = '<span>fridman@mail.sfsu.edu</span>';
+    });
+
+    function attachListener(el, eventName, callback) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, callback, false);
+      } else if (el.attachEvent) {
+        el.attachEvent('on' + eventName, callback);
+      }
+    };
+  </script>
+</html>
