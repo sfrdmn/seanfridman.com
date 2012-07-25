@@ -45,10 +45,10 @@ a:visited {
 }
 header {
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
   font-family: Georgia, serif;
   font-weight: bold;
-  padding-bottom: 20px;
+  margin-bottom: 0.5em;
 }
 h1 {
   font-style: italic;
