@@ -1,74 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>seanfridman.com</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link type="text/css" rel="stylesheet" href="/static/css/index.css">
-    <!--[if lt IE 9]>
-      <script src="/static/external/js/html5shiv.js"></script>
-    <![endif]-->
-    <!--[if lte IE 9]>
-      <style type="text/css">
-        header {
-          color: black;
-        }
-      </style>
-    <![endif]-->
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-16879309-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ?
-            'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-  </head>
-  <body>
-    <div class="container">
-      <div>
-        <header>
-          <h1>Sean Fridman</h1>
-          <h2>Programming Services</h2>
-        </header>
-        <div class="tech-images">
-          <ul>
-            <li class="left"></li>
-            <li class="middle"></li>
-            <li class="right"></li>
-          <ul>
-        </div>
-        <section>
-          <ul>
-            <li>
-              <a href="http://twitter.com/sfrdmn">Twitter</a>
-            </li>
-            <li id="email">
-              <a href="#">Email</a>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </div>
-  </body>
-  <script type="text/javascript">
-    var emailLi = document.getElementById('email');
-
-    attachListener(emailLi, 'click', function(e) {
-      e.preventDefault();
-      emailLi.innerHTML = '<span>fridman@mail.sfsu.edu</span>';
-    });
-
-    function attachListener(el, eventName, callback) {
-      if (el.addEventListener) {
-        el.addEventListener(eventName, callback, false);
-      } else if (el.attachEvent) {
-        el.attachEvent('on' + eventName, callback);
+<html>
+  <header>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-    };
-  </script>
+  
+      :root {
+        --base-size: 14px;
+        --size-1: var(--base-size);
+        --size-2: calc(var(--size-1) * 1.6);
+      }
+      
+      body {
+         font-size: var(--size-1);
+         padding: var(--size-2);
+         font-family: Georgia, serif;
+         font-color: #000000;
+         line-height: 160%;
+      }
+      
+      a, a:visited, a:active, a:hover {
+        font-color: #0000ff;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        border-bottom: 2px solid #0000ff;
+      }
+      
+      h1 {
+        font-color: #0000ff;
+        font-size: var(--size-2);
+        margin-bottom: var(--size-2);
+      }
+    </style>
+    <script>
+      console.log('hey buddy')
+    </script>
+  </header>
+  <body>
+    <main>
+      <h1>seanfridman.com</h1>
+      <p>oops I deleted my website haha</p>
+      <p>🚧 under construction 🚧</p>
+      <ul>
+        <li><a href="https://twitter.com/sfrdmn">Twitter</a></li>
+        <li><a href="https://github.com/sfrdmn">Github</a></li>
+        <li>mail at seanfridman dot com</li>
+     </ul>
+    </main>
+  </body>
 </html>
