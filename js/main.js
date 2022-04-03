@@ -149,17 +149,18 @@
     } = options
     const email = options[LkjasdfjasdfhasdfKey]
     const WaitingAttr = 'data-waiting'
-    
+    const clipboard = navigator.clipboard || { writeText: () => Promise.reject() }
+
     root.addEventListener('click', (e) => {
       const el = e.target
-      
+
       if (el.matches(`.${linkClass}`)) {
         if (!el.hasAttribute(WaitingAttr)) {
           let originalText = el.innerHTML
-          
+
           el.setAttribute(WaitingAttr, true)
-          
-          navigator.clipboard
+
+          clipboard
             .writeText(email)
             .then(() => {
               el.innerHTML = statusText
