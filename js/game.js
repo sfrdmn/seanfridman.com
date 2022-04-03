@@ -539,7 +539,7 @@ Upon the slimy sea.`,
             }
             break
           case ManStates.SPAWNING:
-            if (dt > didSpawnInitial ? spawnDuration : initialSpawnDuration) {
+            if (dt > (didSpawnInitial ? spawnDuration : initialSpawnDuration)) {
               // TODO Move out of getState
               didSpawnInitial = true
               spawnCurve = composeCurves([
