@@ -64,7 +64,7 @@ button.inline {
     font-family: var(--font-family);
 }
 
-a, a:visited, a:focus, a:active, a:focus-visible, button.inline {
+a, a:visited, a:focus, a:active, button.inline {
     outline: none;
     border: 1px solid var(--link-color);
     border-radius: 100em;
@@ -73,7 +73,7 @@ a, a:visited, a:focus, a:active, a:focus-visible, button.inline {
     background-color: var(--foreground-color);
 }
 
-button.inline:hover, button.inline:focus, a:hover, a:focus, a:focus-visible {
+button.inline:hover, button.inline:focus, a:hover, a:focus {
     background-color: var(--link-color);
     color: var(--foreground-color);
 }
@@ -215,6 +215,7 @@ button.inline:hover, button.inline:focus, a:hover, a:focus, a:focus-visible {
     text-shadow: calc(var(--shadow) * -1) calc(var(--shadow) * -1) var(--shadow) rgba(var(--gold-light-01-rgb), 0.2), var(--shadow) var(--shadow) var(--shadow) rgba(var(--gold-dark-01-rgb), 0.25);
     -webkit-text-stroke: 1px rgba(0, 0, 0, 1);
 	  -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
 }
 
 .logo--blue {
