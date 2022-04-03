@@ -999,6 +999,7 @@ Upon the slimy sea.`,
   }
 
   const createGame = (el, {
+    audioContext,
     interfaceEls = [],
     isBackgroundMode = true,
     onExcerptChange = noop,
@@ -1012,7 +1013,6 @@ Upon the slimy sea.`,
       height, 
       dpr: DPR
     })
-    const audioContext = typeof AudioContext !== 'undefined' ? new AudioContext() : new webkitAudioContext()
 
     let mousePos
     let panicStart = 0

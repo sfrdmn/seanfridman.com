@@ -1,9 +1,12 @@
 ;((global) => {
   const {
-    noop,
-    timeout,
-  } = global.util    
-  const document = global.document
+    document,
+    unmuteIosAudio,
+    util: {
+      noop,
+      timeout,
+    }
+  } = global
   const lkjasdfjasdfhasdfFunc = x => atob(x + '=')
 
   const EmptyState = {}
@@ -73,7 +76,7 @@
           if (prev.state !== undefined) {
             el.classList.remove(`excerpt-modal-container--${prev.state}`)
           }
-          
+
           el.classList.add(`excerpt-modal-container--${curr.state}`)
         }
 
@@ -85,7 +88,7 @@
           clickHandler = curr.onClick
         }
       }
-    }   
+    }
   }
 
   const soundToggle = ({ state: [stateBox, setState] }) => {
@@ -108,7 +111,7 @@
 
         setState({
           ...curr,
-          active: nextActive, 
+          active: nextActive,
         })
 
         clickHandler(nextActive)
@@ -181,19 +184,24 @@
   }
 
   global.addEventListener('DOMContentLoaded', () => {
+    const audioContext = typeof AudioContext !== 'undefined' ? new AudioContext() : new webkitAudioContext()
+
+    // Helper to allow WebAudio to play even when iOS device muted
+    unmuteIosAudio(audioContext)
+
     const containerEl = document.querySelector('.container')
     const gameEl = document.querySelector('#game-mount')
     const logoEl = document.querySelector('.logo')
     const navEl = document.querySelector('.nav')
-    
+
     const views = {}
-    
+
     const update = () => {
       for (const view of Object.values(views)) {
         view.update()
       }
     }
-    
+
     const mainState = reaction(update, {
       soundToggle: {
         active: false,
@@ -204,11 +212,11 @@
         x: 0,
         y: 0,
       },
-    })    
+    })
 
     const excerptModalState = lense(mainState, 'excerptModal' )
     const soundToggleState = lense(mainState, 'soundToggle')
-    
+
     const modalView = views.Modal =  excerptModal({ state: excerptModalState })
     const soundToggleView = views.SoundToggle = soundToggle({ state: soundToggleState })
 
@@ -244,7 +252,7 @@
         modalView.el.style.setProperty('--x', `${x}px`)
         modalView.el.style.setProperty('--y', `${y}px`)
       }
-        
+
       setState({
         ...stateBox.curr,
         ...props,
@@ -253,7 +261,7 @@
 
     const onLoadSound = (game) => {
       const [soundToggleStateBox, setSoundToggleState] = soundToggleState
-      
+
       setSoundToggleState({
         ...soundToggleStateBox.curr,
         loaded: true,
@@ -264,6 +272,7 @@
     }
 
     global.createGame(gameEl, {
+      audioContext,
       interfaceEls: [logoEl, navEl, soundToggleView.el],
       isBackgroundMode: !document.body.matches('.page--index'),
       onLoadSound,
@@ -278,9 +287,9 @@
           game.closeExcerpt()
         }
       })
-      
+
       global.game = game
-      
+
       game.start()
     })
   })
