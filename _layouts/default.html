@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	  <meta charset="utf-8" />
+    <meta name="description" content="{{page.description | default: site.description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title != nil %}{{page.title | downcase}} | {% endif %}seanfridman.com</title>
+    <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48">
+    <meta property="og:title" content="{% if page.title != nil %}{{page.title | downcase}} | {% endif %}seanfridman.com">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seanfridman.com">
+    <meta property="og:image" content="https://seanfridman.com/opengraph.png">
+    <script defer src="/bundle.js"></script>
+    <style>
+     {% include_relative /css/main.css %}
+    </style>
+    <link rel="stylesheet" href="https://use.typekit.net/swm8atf.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  </head>
+  <body class="page page--{{page.id}}">
+    <div class="container">
+      <div id="game-mount"></div>
+      <nav class="nav">
+        <ul>
+          <li class="{% if page.id == 'index' %}active{% endif %}">
+		        <a href="/">Home</a>
+          </li>
+          <li class="{% if page.id == 'about' %}active{% endif %}">
+		        <a href="/about">About</a>
+          </li>
+        </ul>
+      </nav>
+      {% if page.url  == "/" %}
+      <header>
+        <h1 class="logo">
+ 		      <span class="logo--gold">
+            sean fridman
+          </span>
+          <span class="logo--blue">.com</span>
+        </h1>
+      </header>
+      {% endif %}
+      {% if page.url  != "/" %}
+      <main>
+        {{ content }}
+      </main>
+      {% endif %}
+    </div>
+
+    <template id="excerpt-template">
+      <div class="excerpt-modal-container">
+        <div class="excerpt-modal-overlay"></div>
+        <div class="excerpt-modal">
+          <span class="excerpt-modal__content"></span>
+        </div>
+      </div>
+    </template>
+    
+    <template id="sound-toggle-template">
+      <div class="sound-toggle-container loading">
+        <button class="sound-toggle" aria-label="Toggle sound">
+        </button>
+      </div>
+    </template>
+    
+    <template id="speaker-icon-template">
+      <svg class="speaker-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.48 580.48" aria-hidden="true">
+        <g id="speaker-icon__speaker">
+          <path class="speaker-icon__speaker__path" d="M336.59,117.42A16.64,16.64,0,0,0,318.76,120L209.09,214.82h-102A16.67,16.67,0,0,0,90.4,231.49V358.77a16.67,16.67,0,0,0,16.67,16.67H207.45l111.31,96.28a16.67,16.67,0,0,0,27.57-12.61V132.57A16.66,16.66,0,0,0,336.59,117.42Z"/>
+          <path class="speaker-icon__speaker__path" d="M447.82,167.56A16.67,16.67,0,1,0,421,187.34a183.32,183.32,0,0,1,0,217.55,16.67,16.67,0,0,0,26.84,19.78,216.66,216.66,0,0,0,0-257.11Z"/>
+          <path class="speaker-icon__speaker__path" d="M401,215.63a16.67,16.67,0,0,0-27.87,18.3,113.25,113.25,0,0,1,0,124.37A16.67,16.67,0,1,0,401,376.59,146.59,146.59,0,0,0,401,215.63Z"/>
+        </g>
+        <g id="speaker-icon__cross-out">
+          <path class="speaker-icon__cross-out__path" d="M495.47,85A290.24,290.24,0,1,0,85,495.47,290.24,290.24,0,1,0,495.47,85Zm-24.75,24.75A255.24,255.24,0,0,1,484.31,456L124.45,96.16a255.26,255.26,0,0,1,346.27,13.6Zm-361,361a255.26,255.26,0,0,1-13.6-346.27L456,484.31a255.24,255.24,0,0,1-346.27-13.59Z"/>
+        </g>
+      </svg>
+    </template>
+  </body>
+</html>

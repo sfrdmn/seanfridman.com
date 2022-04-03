@@ -1,0 +1,367 @@
+:root {
+    --font-family: sofia-pro, sans-serif;
+    --base-size: 16px;
+    --base-weight: 100;
+    --page-padding: .613rem;
+    --background-color: rgb(250, 250, 250);
+    --foreground-color: rgb(254, 254, 254);
+    --blue: rgb(0, 0, 255);
+    --newgrounds-green: rgb(113, 253, 74);
+    --newgrounds-red: rgb(224, 48, 34);
+    --shadow-main-color: rgba(0, 0, 0, 0.05);
+    --shadow-main: 3px 7px 0px var(--shadow-main-color);
+    --border-round: 3px;
+    --gold-dark-01-rgb: 191, 149, 63;
+    --gold-light-01-rgb: 252, 246, 186;
+    --link-color: var(--blue);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+a, a:hover, a:visited, a:focus, a:active {
+    text-decoration: none;
+}
+
+button {
+	outline: 0;
+	border: 0;
+  margin: 0;
+  background-color: inherit;
+  font-family: inherit;
+	cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: var(--font-family);
+	  font-size: var(--base-size);
+    font-weight: var(--base-weight);
+    background-color: var(--background-color);
+    color: var(--blue);
+    line-height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgb(240, 240, 240);
+}
+
+button.inline {
+    display: inline;
+    font-size: var(--base-size);
+    font-weight: var(--base-weight);
+    font-family: var(--font-family);
+}
+
+a, a:visited, a:focus, a:active, a:focus-visible, button.inline {
+    outline: none;
+    border: 1px solid var(--link-color);
+    border-radius: 100em;
+    color: var(--link-color);
+    padding: 0px 9px 1.5px 9px;
+    background-color: var(--foreground-color);
+}
+
+button.inline:hover, button.inline:focus, a:hover, a:focus, a:focus-visible {
+    background-color: var(--link-color);
+    color: var(--foreground-color);
+}
+
+.container {
+    transform: translate(0, 0);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    max-width: 2000px;
+    max-height: 1500px;
+    background-color: var(--background-color);
+    box-shadow: var(--shadow-main);
+    padding: var(--page-padding);
+}
+
+#game-mount {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.sound-toggle-container {
+    display: none;
+    position: fixed;
+    bottom: var(--page-padding);
+    right: var(--page-padding);
+    z-index: 2;
+    opacity: 1;
+}
+
+.page--index .sound-toggle-container {
+    display: block;
+}
+
+.sound-toggle-container.loading {
+    opacity: 0.25;
+}
+
+.sound-toggle {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.speaker-icon__speaker__path {
+    fill: transparent;
+    stroke: var(--blue);
+    stroke-width: 10;
+}
+
+.speaker-icon__cross-out__path {
+    fill: var(--blue);
+}
+
+.sound-toggle-container.active .speaker-icon__cross-out__path {
+    display: none;
+}
+
+.nav {
+    position: relative;
+    z-index: 3;
+    margin-bottom: var(--page-padding);
+}
+
+.nav li {
+    display: inline-block;
+}
+
+.nav a {
+    font-family: sofia-pro-soft, sans-serif;
+    font-weight: 100;
+    border-color: black;
+    color: black;
+    opacity: 0.5;
+    background-color: transparent;
+}
+
+.nav .active a, .nav a:hover, .nav a:focus {
+    color: var(--blue);
+    border-color: var(--blue);
+    opacity: 1;
+}
+
+.logo {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    width: calc(100% - var(--page-padding));
+    max-width: calc(100% - var(--page-padding));
+	  font-family: sofia-pro-soft, sans-serif;
+    font-weight: 600;
+	  text-align: left;
+	  font-size: 4em;
+	  line-height: 1em;
+	  text-transform: uppercase;
+	  background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: var(--border-round);
+    padding: 0.5em;
+    background-image: linear-gradient(100deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    filter: brightness(1.2);
+    box-shadow: var(--shadow-main);
+    z-index: 4;
+}
+
+.logo::before {
+    --opacity: 0.25;
+    --dark-rgb: 191, 149, 63;
+    --light-rgb: 252, 246, 186;
+
+	  position: absolute;
+	  content: "";
+	  left: 0.25em;
+	  right: 0.25em;
+	  top: 0.25em;
+	  bottom: 0.25em;
+    background-color: rgba(255, 255, 255, 0.05);
+  	background-image: repeating-radial-gradient(circle, rgba(var(--light-rgb), var(--opacity)), rgba(var(--dark-rgb),  var(--opacity)), rgba(var(--light-rgb), var(--opacity)) 75px);
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: calc(var(--border-round) - 1px);
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.1), inset 2px 2px 4px rgba(0, 0, 0, 0.1);
+    filter: brightness(0.83);
+}
+
+.logo--gold {
+    --opacity: 1;
+    --shadow: 3px;
+
+    color: transparent;
+    position: relative;
+	  top: -0.05em;
+    background-image: linear-gradient(180deg, rgba(var(--gold-dark-01-rgb), var(--opacity)) 20%, rgba(var(--gold-light-01-rgb), var(--opacity)), rgba(var(--gold-dark-01-rgb), var(--opacity)) 90%);
+    text-shadow: calc(var(--shadow) * -1) calc(var(--shadow) * -1) var(--shadow) rgba(var(--gold-light-01-rgb), 0.2), var(--shadow) var(--shadow) var(--shadow) rgba(var(--gold-dark-01-rgb), 0.25);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 1);
+	  -webkit-background-clip: text;
+}
+
+.logo--blue {
+    position: absolute;
+    top: 2.45em;
+    right: 0.25em;
+    transform: rotate(-3deg);
+    font-family: "Pacifico", cursive;
+    font-weight: 500;
+    color: var(--blue);
+    background-color: rgba(255, 255, 255, 1);
+    color: transparent;
+    -webkit-text-stroke: 1px var(--blue);
+    letter-spacing: -0.1em;
+    text-shadow: 1px 1px 0 var(--blue), var(--shadow-main);
+    -webkit-background-clip: text;
+}
+
+main {
+    position: relative;
+    z-index: 3;
+    color: black;
+    border: 1px solid black;
+    padding: calc(var(--page-padding) * 1.63);
+    box-shadow: var(--shadow-main);
+    border-radius: var(--border-round);
+    background-color: var(--foreground-color);
+    z-index: 2;
+}
+
+.excerpt-modal-container {
+    --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --width: 350px;
+    --height: 450px;
+    --edge-padding: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.excerpt-modal-container--open {
+    pointer-events: auto;
+}
+
+.excerpt-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background-color var(--transition-ms) var(--ease-out) var(--transition-delay);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.excerpt-modal {
+    border: 1px solid var(--blue);
+    border-radius: var(--border-round);
+    padding: 1em;
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--foreground-color);
+    overflow-y: scroll;
+    transition: opacity var(--transition-ms) var(--ease-out) var(--transition-delay),
+                transform var(--transition-ms) var(--ease-out) var(--transition-delay),
+                top var(--transition-ms) var(--ease-out) var(--transition-delay),
+                left var(--transition-ms) var(--ease-out) var(--transition-delay),
+                box-shadow var(--transition-ms) var(--ease-out) var(--transition-delay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    top: calc(var(--y) - var(--height) / 2);
+    left: calc(var(--x) - var(--width) / 2);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transform: scaleX(0) scaleY(0.5);
+    opacity: 0.1;
+}
+
+.excerpt-modal__content {
+    font-family: sofia-pro-soft, sans-serif;
+    font-weight: 100;
+    line-height: 1.63em;
+    -moz-tab-size: 2;
+    tab-size: 2;
+    white-space: pre-wrap;
+    color: var(--blue);
+}
+
+.excerpt-modal-container--opening .excerpt-modal-overlay,
+.excerpt-modal-container--open .excerpt-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.excerpt-modal-container--opening .excerpt-modal,
+.excerpt-modal-container--open .excerpt-modal {
+    box-shadow: 25px 50px 0px rgba(0, 0, 0, 0.05);
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    top: calc(100% / 2 - var(--height) / 2);
+    left: calc(100% / 2 - var(--width) / 2);
+}
+
+@media (min-width: 449px) {
+    :root {
+        --page-padding: 1.63rem;
+        --shadow-main: 7px 7px 0px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+        width: 21.6rem;
+    }
+
+    .logo--blue {
+        right: -0.5em;
+    }
+
+    .nav li {
+        margin-right: 1em;
+    }
+
+    .nav a {
+        font-size: 1.63em;
+    }
+
+    main {
+        min-width: 32.5em;
+        max-width: min(calc(100vw - var(--page-padding) * 2), 800px);
+    }
+}
+
+@media (min-width: 43.05rem) {
+    :root {
+        --page-padding: 2.63rem;
+    }
+
+    .logo {
+        width: auto;
+    }
+
+    .logo--blue {
+        top: 1.4em;
+    }
+}
