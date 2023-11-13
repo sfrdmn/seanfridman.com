@@ -13,7 +13,7 @@
       Curve,
       AssetType,
       SceneObjects,
-      
+
       createSurface,
       renderer,
       loop,
@@ -34,7 +34,7 @@
   } = global
 
   const DPR = global.devicePixelRatio || 1
-  
+
   const oobPadding = 50
   const runCoeff = 15
   const jumpDuration = 250
@@ -276,7 +276,7 @@ Of a bicycle built for two.`,
         )
         surface.ctx.drawImage(composite, 0, 0)
         surface.ctx.fillStyle
-        
+
         surface.ctx.resetTransform()
         surface.ctx.globalCompositeOperation = 'source-in'
         surface.ctx.fillStyle = color
@@ -351,11 +351,11 @@ Of a bicycle built for two.`,
 
       if (chain !== nextChain) {
         chain = nextChain
-        
+
         onChange(props)
       }
     }
-    
+
     return {
       id,
       type: 'excerptmanager',
@@ -403,10 +403,10 @@ Of a bicycle built for two.`,
       const isActive = id === activeId
       const state =  isActive ? chain.state : ExcerptStates.CLOSED
       const isOpen = state !== ExcerptStates.CLOSED
-      const excerptFrame = isOpen ? 1 : 0      
+      const excerptFrame = isOpen ? 1 : 0
       const excerptId = `${id}-excerpt-${excerptFrame}`
       const opacity = spawnCurve(t - spawnTime)
-      
+
       return [{
         id: excerptId,
         hidden: true,
@@ -493,13 +493,13 @@ Of a bicycle built for two.`,
         return collisionPadding
       }
     }
-    
+
     const getNextChainNode = (node, t) => {
       // Don't stop running until panic is done and is not colliding with anybody
       const canStopRunning = () => {
         return isPanicDone(t, node) && !isCollision({ id, props }, collisionPadding)
       }
-      
+
       const getState = () => {
         if (!node) {
           return ManStates.SPAWNING
@@ -534,7 +534,7 @@ Of a bicycle built for two.`,
                 return ManStates.SITTING
               } else {
                 return ManStates.WALKING
-              }              
+              }
             }
             break
           case ManStates.SITTING:
@@ -577,7 +577,7 @@ Of a bicycle built for two.`,
               return canStopRunning() ? ManStates.WALKING : ManStates.RUNNING
             }
             break
-          }          
+          }
         }
       }
 
@@ -593,7 +593,7 @@ Of a bicycle built for two.`,
     let chain = getNextChainNode(undefined, Date.now())
 
     const legWidth = 32
-    const legHeight = 16    
+    const legHeight = 16
     const legOffset = 5
     const shadowSkew = -45
     const deathSkew = 45
@@ -687,7 +687,7 @@ Of a bicycle built for two.`,
       const opacity = spawnCoeff * despawnCoeff
       const fallBounceCoeff = chain.state === ManStates.FALLING ? fallBounce(stateDt) : 0
       const fallOffset = fallStrength * fallBounceCoeff
-      
+
       return [{
         id: `${renderId}-root`,
         type: SceneObjects.COMPOSITE,
@@ -910,7 +910,7 @@ Of a bicycle built for two.`,
         }
 
         chain = nextChain
-        chain.handled = true        
+        chain.handled = true
         // props.animation.state = chain.state
         // props.animation.start = Date.now()
       }
@@ -951,7 +951,7 @@ Of a bicycle built for two.`,
         const hitEntity = isCollision(next, getCollisionPadding())
         const runningHit = hitEntity && chain.state === ManStates.RUNNING
         const fallingHit = hitEntity && chain.state === ManStates.FALLING
-        
+
         collideReaction(runningHit || fallingHit)
 
         if (hitOOB || hitEntity) {
@@ -968,7 +968,7 @@ Of a bicycle built for two.`,
           if (chain.state !== ManStates.WAITING) {
             chain = getChainNode(ManStates.WAITING)
           }
-          
+
           return
         }
       } while (!ok)
@@ -1024,7 +1024,7 @@ Of a bicycle built for two.`,
     let height = el.clientHeight
     const surface = createSurface({
       width,
-      height, 
+      height,
       dpr: DPR
     })
 
@@ -1045,7 +1045,7 @@ Of a bicycle built for two.`,
     } = {}) => {
       const duration = attack + decay
       const durationSecs = duration / 1000
-      
+
       return (t) => {
         return curve(t) * amp * Math.cos(freq * durationSecs * (t / duration * Math.PI * 2))
       }
@@ -1085,7 +1085,7 @@ Of a bicycle built for two.`,
         if (dt > duration) {
           return empty
         }
-        
+
         const bumpOffset = bump(dt)
         const shakeOffset = shake(dt)
 
@@ -1131,7 +1131,7 @@ Of a bicycle built for two.`,
       sfx.addVoice(AssetId.Sound.BOUNCE, { polyphony: 2, clipLength: 100  })
 
       music.addTrack(AssetId.Music.THA_KI_TA)
-      
+
       const handleExcerptChange = ({ activeId }) => {
         if (!activeId) {
           return
@@ -1145,14 +1145,14 @@ Of a bicycle built for two.`,
         } else if (activeId && props.state === ExcerptStates.CLOSING) {
           sfx.requestPlay(AssetId.Sound.EXCERPT_CLOSE, playback)
         }
-        
+
         onExcerptChange({ ...props, transitionMs: excerptOpenDuration })
       }
-      
+
       const excerptManager = createExcerptManager({
         onChange: handleExcerptChange
       })
-      
+
       const getPlayback = ({
         gain: {
           lower: gainLower = 0.25,
@@ -1163,7 +1163,7 @@ Of a bicycle built for two.`,
       } = {}) => {
         gainLower = Math.max(0, Math.min(1, Math.min(gainLower, gainUpper)))
         gainUpper = Math.max(0, Math.min(1, Math.max(gainLower, gainUpper)))
-        
+
         const cx = width / 2
         const cy = height / 2
         const dx = x - cx
@@ -1190,8 +1190,8 @@ Of a bicycle built for two.`,
             x,
             y,
           })
-        })       
-        
+        })
+
         entities.ofType(EntityType.MAN).forEach((entity) => {
           entity.onSmash({ panicStart, panicThreshold })
         })
@@ -1217,7 +1217,7 @@ Of a bicycle built for two.`,
         if (!getBBoxB) {
           getBBoxB = getBBoxA
         }
-        
+
         return (b, padding = 0) => {
           return bodies.some((a) => a.id !== b.id && intersects(getBBoxA(a), getBBoxB(b), padding))
         }
@@ -1240,7 +1240,7 @@ Of a bicycle built for two.`,
         let i = 0
         do {
           coord = getRandomCoord()
-          
+
           if (i++ > maxAttempts) {
             return false
           }
@@ -1279,7 +1279,7 @@ Of a bicycle built for two.`,
 
         if (!coord) {
           return
-        }        
+        }
 
         return createMan({
           x: coord.x,
@@ -1342,7 +1342,7 @@ Of a bicycle built for two.`,
         const man = spawnMan({ isInitial: true })
 
         if (man) {
-          entities.add(man)        
+          entities.add(man)
         }
       }
 
@@ -1404,7 +1404,7 @@ Of a bicycle built for two.`,
         if (isBackgroundMode) {
           return
         }
-        
+
         mousePos = { x: e.offsetX, y: e.offsetY, width: 1, height: 1 }
       }, 17))
 
@@ -1412,7 +1412,7 @@ Of a bicycle built for two.`,
         if (isBackgroundMode) {
           return
         }
-        
+
         const point = { x: e.offsetX, y: e.offsetY, width: 1, height: 1 }
 
         const index = entities.iter().findIndex(e => intersects(e.props, point) && e.isInteractable())
@@ -1449,7 +1449,7 @@ Of a bicycle built for two.`,
     }
 
     const soundAssets = Object.values(AssetId.Sound).concat(Object.values(AssetId.Music))
-    const preloadAssets = Object.values(AssetId.Meta).concat(Object.values(AssetId.Sprite))  
+    const preloadAssets = Object.values(AssetId.Meta).concat(Object.values(AssetId.Sprite))
 
     el.appendChild(surface.canvas)
 
@@ -1464,7 +1464,7 @@ Of a bicycle built for two.`,
         soundAssetPromise.then(() => {
           onLoadSound(game)
         })
-        
+
         return game
       })
   }
