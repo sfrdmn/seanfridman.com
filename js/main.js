@@ -188,7 +188,7 @@
     const audioContext = typeof AudioContext !== 'undefined' ? new AudioContext() : new webkitAudioContext()
 
     // Helper to allow WebAudio to play even when iOS device muted
-    unmuteIosAudio(audioContext)
+    unmuteIosAudio(audioContext, true)
 
     const containerEl = document.querySelector('.container')
     const gameEl = document.querySelector('#game-mount')
