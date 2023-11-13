@@ -65,8 +65,8 @@
   const excerptOpenDuration = 800
 
   const Excerpts = [
-//////////
-`Water, water, every where,
+      //////////
+      `Water, water, every where,
 And all the boards did shrink;
 Water, water, every where,
 Nor any drop to drink.
@@ -75,17 +75,31 @@ The very deep did rot: O Christ!
 That ever this should be!
 Yea, slimy things did crawl with legs
 Upon the slimy sea.`,
-//////////    
-`\tWas ist in Wahrheit das Ding, sofern es ein Ding ist? Wenn wir so fragen, wollen wir das Dingsein (die Dingheit) des Dinges kennenlernen.`,
-//////////
-`\tMind precedes its objects. They are mind-governed and mind-made. To speak or act with a defiled mind is to draw pain after oneself, like a wheel behind the feet of the animal drawing it.
+      //////////
+      `\tWas ist in Wahrheit das Ding, sofern es ein Ding ist? Wenn wir so fragen, wollen wir das Dingsein (die Dingheit) des Dinges kennenlernen.`,
+      //////////
+      `\tMind precedes its objects. They are mind-governed and mind-made. To speak or act with a defiled mind is to draw pain after oneself, like a wheel behind the feet of the animal drawing it.
 
 \tMind precedes its objects. They are mind-governed and mind-made. To speak or act with a peaceful mind, is to draw happiness after oneself, like an inseparable shadow.`,
-//////////
-`\tI was now trying to get the better of the stupor that had come over me, and to collect my senses so as to see what was to be done, when I felt somebody grasp my arm. It was my elder brother, and my heart leaped for joy, for I had been sure that he was overboard — but the next moment all this joy was turned into horror — for he put his mouth close to my ear, and screamed out the word “Maelström!”`,
-//////////
+      //////////
+      `\tI was now trying to get the better of the stupor that had come over me, and to collect my senses so as to see what was to be done, when I felt somebody grasp my arm. It was my elder brother, and my heart leaped for joy, for I had been sure that he was overboard — but the next moment all this joy was turned into horror — for he put his mouth close to my ear, and screamed out the word “Maelström!”`,
+      //////////
+      `Tryin’ to make it real,
+Compared to what?
+C’mon baby now!`,
+      //////////
+      `Daisy, Daisy,
+Give me your answer true,
+I’m half crazy,
+All for the love of you,
+It won’t be a stylish marriage,
+I can’t afford a carriage,
+But you’ll look sweet,
+Upon the seat,
+Of a bicycle built for two.`,
+      //////////
   ]
-  
+
   const randomGrabber = (list) => {
     let remaining = []
 
