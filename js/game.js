@@ -84,14 +84,14 @@ Upon the slimy sea.`,
       //////////
       `\tI was now trying to get the better of the stupor that had come over me, and to collect my senses so as to see what was to be done, when I felt somebody grasp my arm. It was my elder brother, and my heart leaped for joy, for I had been sure that he was overboard — but the next moment all this joy was turned into horror — for he put his mouth close to my ear, and screamed out the word “Maelström!”`,
       //////////
-      `Tryin’ to make it real,
-Compared to what?
-C’mon baby now!`,
+      `Compared to what?`,
       //////////
-      `Daisy, Daisy,
-Give me your answer true,
+      `Daisy,
+Daisy,
+Give me your answer true.
 I’m half crazy,
-All for the love of you,
+All for the love of you.
+
 It won’t be a stylish marriage,
 I can’t afford a carriage,
 But you’ll look sweet,
