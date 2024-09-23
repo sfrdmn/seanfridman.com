@@ -84,8 +84,6 @@ Upon the slimy sea.`,
       //////////
       `\tI was now trying to get the better of the stupor that had come over me, and to collect my senses so as to see what was to be done, when I felt somebody grasp my arm. It was my elder brother, and my heart leaped for joy, for I had been sure that he was overboard — but the next moment all this joy was turned into horror — for he put his mouth close to my ear, and screamed out the word “Maelström!”`,
       //////////
-      `Compared to what?`,
-      //////////
       `Daisy,
 Daisy,
 Give me your answer true.
@@ -98,6 +96,18 @@ But you’ll look sweet,
 Upon the seat,
 Of a bicycle built for two.`,
       //////////
+      `What art thou, O Man,
+And from whence hadst thou thy beginning?
+What matter art thou made of,
+That thou promises to thy selfe
+\t\tlength of daies,
+Or to thy posterity continuance?
+
+I haue read the truest computer of Times,
+And the best Arithmetician
+\t\tthat euer breathed,
+And he reduceth thy dayes
+\t\tinto a short number.`,
   ]
 
   const randomGrabber = (list) => {
